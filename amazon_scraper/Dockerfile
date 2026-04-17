@@ -29,8 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         jq \
         fonts-liberation \
         fonts-noto-color-emoji \
-    && rm -rf /var/lib/apt/lists/* \
-    && ln -sf /usr/share/novnc/vnc.html /usr/share/novnc/index.html
+    && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir --break-system-packages -r /tmp/requirements.txt \
@@ -39,6 +38,7 @@ RUN pip3 install --no-cache-dir --break-system-packages -r /tmp/requirements.txt
 
 COPY app /opt/scraper/app
 COPY run.sh /run.sh
+COPY rootfs/usr/share/novnc/index.html /usr/share/novnc/index.html
 RUN chmod a+x /run.sh
 
 WORKDIR /opt/scraper
