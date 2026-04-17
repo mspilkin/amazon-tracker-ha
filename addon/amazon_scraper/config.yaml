@@ -1,0 +1,30 @@
+name: Amazon Scraper
+version: "0.1.0"
+slug: amazon_scraper
+description: Playwright-based Amazon order scraper for the Amazon Tracker integration
+url: https://github.com/mspilkin/amazon-tracker-ha
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+hassio_api: true
+ingress: true
+ingress_port: 6080
+panel_icon: mdi:package-variant-closed
+panel_title: Amazon Login
+ports:
+  8099/tcp: 8099
+ports_description:
+  8099/tcp: Scraper API (internal)
+map:
+  - share:rw
+options:
+  amazon_domain: amazon.com
+  history_months: 24
+  log_level: info
+schema:
+  amazon_domain: list(amazon.com|amazon.co.uk|amazon.de|amazon.fr|amazon.it|amazon.es|amazon.ca|amazon.com.au|amazon.co.jp)
+  history_months: int(1,120)
+  log_level: list(debug|info|warning|error)

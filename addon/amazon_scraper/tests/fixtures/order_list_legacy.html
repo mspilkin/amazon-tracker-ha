@@ -1,0 +1,20 @@
+<!doctype html>
+<html><body>
+<!--
+Fixture simulating Amazon dropping data-component attributes (selector regression).
+Parsers must fall back to .order-card and text-anchored scraping.
+-->
+<div id="ordersContainer">
+  <div class="order-card-legacy a-box-group">
+    <div class="order-info">
+      <div class="a-column"><div class="value">January 10, 2026</div></div>
+      <div class="a-column"><div class="value">$25.00</div></div>
+      <div class="yohtmlc-order-id">
+        <span>Order #</span>
+        <span><bdi>115-5555555-5555555</bdi></span>
+      </div>
+    </div>
+    <div class="shipment-top-row"><div class="a-size-medium">Shipped</div></div>
+  </div>
+</div>
+</body></html>

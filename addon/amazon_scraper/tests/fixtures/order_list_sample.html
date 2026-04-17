@@ -1,0 +1,55 @@
+<!doctype html>
+<html><body>
+<div id="ordersContainer">
+
+  <div class="order-card js-order-card" data-component="orderCard">
+    <div class="order-info">
+      <div class="a-row">
+        <div class="a-column" data-component="orderDate">January 12, 2026</div>
+        <div class="a-column" data-component="orderTotal">$49.99</div>
+      </div>
+      <div class="yohtmlc-order-id" data-component="orderId">
+        <span>Order #</span>
+        <span><bdi>112-1234567-1234567</bdi></span>
+      </div>
+    </div>
+    <div class="shipment">
+      <div data-component="shipmentStatus" class="a-size-medium">Arriving tomorrow</div>
+    </div>
+  </div>
+
+  <div class="order-card js-order-card" data-component="orderCard">
+    <div class="order-info">
+      <div class="a-row">
+        <div class="a-column" data-component="orderDate">Dec 28, 2025</div>
+        <div class="a-column" data-component="orderTotal">$12.34</div>
+      </div>
+      <div class="yohtmlc-order-id" data-component="orderId">
+        <span>Order #</span>
+        <span><bdi>113-7654321-7654321</bdi></span>
+      </div>
+    </div>
+    <div class="shipment">
+      <div data-component="shipmentStatus" class="a-size-medium">Delivered January 2</div>
+    </div>
+  </div>
+
+  <!-- Older card that should be excluded by a 24-month window of "today" far in the future. -->
+  <div class="order-card js-order-card" data-component="orderCard">
+    <div class="order-info">
+      <div class="a-row">
+        <div class="a-column" data-component="orderDate">March 5, 2020</div>
+        <div class="a-column" data-component="orderTotal">$9.99</div>
+      </div>
+      <div class="yohtmlc-order-id" data-component="orderId">
+        <span>Order #</span>
+        <span><bdi>114-0000000-0000000</bdi></span>
+      </div>
+    </div>
+    <div class="shipment">
+      <div data-component="shipmentStatus" class="a-size-medium">Delivered</div>
+    </div>
+  </div>
+
+</div>
+</body></html>

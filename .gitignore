@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Venvs
+.venv/
+venv/
+env/
+
+# Test + tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Runtime / secrets (must never be committed)
+storage_state.json
+*.env
+.env.*
+
+# HA addon local build artifacts
+.stash/
+
+# Claude Code local state
+.claude/
