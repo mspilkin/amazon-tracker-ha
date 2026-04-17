@@ -3,6 +3,7 @@ FROM ${BUILD_FROM}
 
 ENV \
     LANG=C.UTF-8 \
+    DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PLAYWRIGHT_BROWSERS_PATH=/opt/playwright \
@@ -14,29 +15,25 @@ ENV \
     STORAGE_STATE_PATH=/data/storage_state.json \
     DEBUG_DUMP_PATH=/share/amazon_tracker/debug
 
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
         xvfb \
-        xdpyinfo \
         x11vnc \
+        x11-utils \
         fluxbox \
         novnc \
         websockify \
-        chromium \
-        nss \
-        freetype \
-        harfbuzz \
+        python3 \
+        python3-pip \
         ca-certificates \
-        ttf-freefont \
-        font-noto-emoji \
-        dbus \
-        py3-pip \
+        curl \
+        fonts-liberation \
+        fonts-noto-color-emoji \
+    && rm -rf /var/lib/apt/lists/* \
     && ln -sf /usr/share/novnc/vnc.html /usr/share/novnc/index.html
 
-ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
-    PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir --break-system-packages -r /tmp/requirements.txt \
+RUN pip3 install --no-cache-dir --break-system-packages -r /tmp/requirements.txt \
+    && python3 -m playwright install --with-deps chromium \
     && rm /tmp/requirements.txt
 
 COPY app /opt/scraper/app
