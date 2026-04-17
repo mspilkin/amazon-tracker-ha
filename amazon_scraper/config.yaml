@@ -1,5 +1,5 @@
 name: Amazon Scraper
-version: "0.1.1"
+version: "0.1.2"
 slug: amazon_scraper
 description: Playwright-based Amazon order scraper for the Amazon Tracker integration
 url: https://github.com/mspilkin/amazon-tracker-ha
