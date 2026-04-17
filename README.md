@@ -12,7 +12,8 @@ skeleton) not started yet.
 
 ```
 .
-├─ addon/amazon_scraper/          # HA add-on: Playwright + FastAPI + noVNC
+├─ repository.yaml                # HA add-on repo metadata
+├─ amazon_scraper/          # HA add-on: Playwright + FastAPI + noVNC
 │  ├─ app/                         # Python service
 │  ├─ tests/                       # Parser unit tests (25 passing)
 │  ├─ config.yaml                  # HA add-on manifest
@@ -33,5 +34,5 @@ skeleton) not started yet.
 - **Phase 4** — Delivery photo download, rich entity attributes, HACS
   packaging, end-to-end verification.
 
-See the [add-on README](addon/amazon_scraper/README.md) for install and usage
+See the [add-on README](amazon_scraper/README.md) for install and usage
 of the Phase 1 deliverable.
