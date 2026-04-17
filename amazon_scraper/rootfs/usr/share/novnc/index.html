@@ -1,5 +1,22 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Amazon Login</title>
-<meta http-equiv="refresh" content="0;url=vnc.html?autoconnect=true&amp;resize=scale&amp;reconnect=true&amp;path=websockify">
+<script>
+  // noVNC builds the WebSocket URL as wss://host:port/<path>, NOT relative to
+  // vnc.html. Under HA ingress the path looks like
+  //   /hassio/ingress/<token>/<file>
+  // so we compute the directory prefix here and pass the full WS path through.
+  (function () {
+    var dir = window.location.pathname.replace(/\/[^/]*$/, "");
+    var wsPath = (dir.charAt(0) === "/" ? dir.slice(1) : dir) + "/websockify";
+    var params = new URLSearchParams({
+      autoconnect: "true",
+      resize: "scale",
+      reconnect: "true",
+      path: wsPath,
+    });
+    window.location.replace("vnc.html?" + params.toString());
+  })();
+</script>
+<noscript>JavaScript is required for the Amazon Login UI.</noscript>
 <p>Loading Amazon Login UI...</p>
