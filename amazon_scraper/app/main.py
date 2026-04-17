@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import asyncio
 import logging
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
@@ -31,6 +33,13 @@ async def lifespan(app: FastAPI):
     app.state.settings = settings
     app.state.browser = browser
     app.state.orchestrator = orchestrator
+
+    # Zero-terminal UX: if no session exists, auto-open Chromium at the Amazon
+    # sign-in page so the user only has to click the sidebar to finish logging in.
+    if not os.path.exists(settings.storage_state_path):
+        _LOGGER.info("No storage_state.json; auto-opening login window")
+        asyncio.create_task(browser.open_login())
+
     try:
         yield
     finally:
